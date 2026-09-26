@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NPR Auto Spa | Mobile Car Detailing</title>
+  <meta name="description" content="Professional mobile car detailing in New Port Richey and surrounding areas. We come to your home or workplace.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5,5,5,.96);
+      border-bottom: 1px solid #252525;
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #e21b23;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #e21b23;
+    }
+
+    .nav-book {
+      background: #e21b23;
+      padding: 10px 17px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      background:
+        radial-gradient(circle at center, #262626 0%, #0b0b0b 48%, #000 100%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .small-title {
+      color: #e21b23;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 82px);
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #e21b23;
+    }
+
+    .hero h2 {
+      font-size: clamp(21px, 3vw, 31px);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 30px;
+      color: #c7c7c7;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 15px 26px;
+      border-radius: 7px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn-red {
+      background: #e21b23;
+      color: white;
+    }
+
+    .btn-red:hover {
+      background: #b91017;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: black;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading span {
+      color: #e21b23;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 47px);
+      margin-top: 7px;
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      margin: 12px auto 0;
+      color: #aaa;
+    }
+
+    /* BENEFITS */
+
+    .benefits {
+      background: #111;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .benefit h3 {
+      margin-bottom: 7px;
+      font-size: 21px;
+    }
+
+    .benefit p {
+      color: #aaa;
+    }
+
+    .icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #121212;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 28px;
+      transition: .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: #e21b23;
+    }
+
+    .service-card h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+
+    .service-card ul {
+      list-style: none;
+    }
+
+    .service-card li {
+      margin: 8px 0;
+      color: #ddd;
+    }
+
+    .service-card li::before {
+      content: "✓";
+      color: #e21b23;
+      font-weight: bold;
+      margin-right: 9px;
+    }
+
+    /* BEFORE AFTER */
+
+    .before-after {
+      background: #111;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .photo-placeholder {
+      min-height: 270px;
+      border-radius: 12px;
+      border: 1px dashed #555;
+      background: linear-gradient(145deg,#191919,#0b0b0b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #777;
+      padding: 20px;
+    }
+
+    /* AREAS */
+
+    .areas-box {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      background: #121212;
+      padding: 40px 25px;
+      border-radius: 12px;
+      border: 1px solid #292929;
+    }
+
+    .areas-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .area {
+      background: #202020;
+      padding: 9px 15px;
+      border-radius: 20px;
+    }
+
+    /* REVIEWS */
+
+    .reviews {
+      background: #111;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .review {
+      background: #181818;
+      padding: 27px;
+      border-radius: 12px;
+    }
+
+    .stars {
+      color: #ffc107;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .review p {
+      color: #ccc;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background: #e21b23;
+    }
+
+    .cta h2 {
+      font-size: clamp(34px,5vw,50px);
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    .cta .btn {
+      background: white;
+      color: #111;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #050505;
+      text-align: center;
+      padding: 35px 20px;
+      color: #888;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+
+    @media(max-width: 800px) {
+
+      .nav-links a:not(.nav-book) {
+        display: none;
+      }
+
+      .benefit-grid,
+      .services-grid,
+      .photo-grid,
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      section {
+        padding: 60px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-container">
+
+    <div class="brand">
+      NPR <span>AUTO SPA</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#results">Our Work</a>
+      <a href="#areas">Service Areas</a>
+      <a href="#reviews">Reviews</a>
+      <a class="nav-book" href="#contact">BOOK NOW</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="small-title">
+      Professional Mobile Detailing
+    </div>
+
+    <h1>
+      NPR <span>AUTO SPA</span>
+    </h1>
+
+    <h2>
+      We Bring the Detail Shop to You.
+    </h2>
+
+    <p>
+      Professional mobile car detailing delivered directly to your
+      home or workplace. From basic maintenance details to deep
+      interior cleaning, we take care of your vehicle while you
+      take care of your day.
+    </p>
+
+    <div class="buttons">
+      <a href="#contact" class="btn btn-red">GET A QUOTE</a>
+      <a href="#services" class="btn btn-outline">VIEW SERVICES</a>
+    </div>
+
+  </div>
+
+</header>
+
+
+<section class="benefits">
+
+  <div class="container benefit-grid">
+
+    <div class="benefit">
+      <div class="icon">🚐</div>
+      <h3>100% Mobile</h3>
+      <p>We come directly to your home or workplace.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="icon">✨</div>
+      <h3>Professional Results</h3>
+      <p>Quality products, equipment and attention to detail.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="icon">⭐</div>
+      <h3>Customer Focused</h3>
+      <p>Reliable service with your satisfaction in mind.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-heading">
+      <span>What We Do</span>
+      <h2>Our Detailing Services</h2>
+      <p>
+        Choose the level of care your vehicle needs.
+      </p>
+    </div>
+
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Basic Detail</h3>
+        <p>
+          Perfect for maintaining a clean vehicle inside and out.
+        </p>
+
+        <ul>
+          <li>Interior vacuum</li>
+          <li>Dashboard & door cleaning</li>
+          <li>Interior & exterior windows</li>
+          <li>Hand exterior wash</li>
+          <li>Wheels & tires</li>
+          <li>Tire shine</li>
+        </ul>
+      </div>
+
+
+      <div class="service-card">
+        <h3>Deep Cleaning</h3>
+        <p>
+          A complete deep cleaning for vehicles that need extra attention.
+        </p>
+
+        <ul>
+          <li>Deep interior cleaning</li>
+          <li>Carpet shampoo</li>
+          <li>Seat cleaning</li>
+          <li>Steam cleaning</li>
+          <li>Interior protection</li>
+          <li>Complete exterior hand wash</li>
+        </ul>
+      </div>
+
+
+      <div class="service-card">
+        <h3>Additional Services</h3>
+        <p>
+          Add extra services depending on your vehicle's needs.
+        </p>
+
+        <ul>
+          <li>Seat stain removal</li>
+          <li>Engine bay cleaning</li>
+          <li>Pet hair removal</li>
+          <li>Leather treatment</li>
+          <li>Headlight restoration</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="before-after" id="results">
+
+  <div class="container">
+
+    <div class="section-heading">
+      <span>Real Results</span>
+      <h2>Before & After</h2>
+      <p>
+        See the difference professional detailing can make.
+      </p>
+    </div>
+
+    <div class="photo-grid">
+
+      <div class="photo-placeholder">
+        Your Before & After Photo
+      </div>
+
+      <div class="photo-placeholder">
+        Your Interior Cleaning Photo
+      </div>
+
+      <div class="photo-placeholder">
+        Your Exterior Detail Photo
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="areas">
+
+  <div class="container">
+
+    <div class="section-heading">
+      <span>We Come To You</span>
+      <h2>Mobile Detailing Service Areas</h2>
+    </div>
+
+    <div class="areas-box">
+
+      <h3>Serving New Port Richey and surrounding areas</h3>
+
+      <p style="color:#aaa; margin-top:10px;">
+        Don't see your area? Contact us to check availability.
+      </p>
+
+      <div class="areas-list">
+        <div class="area">New Port Richey</div>
+        <div class="area">Port Richey</div>
+        <div class="area">Holiday</div>
+        <div class="area">Spring Hill</div>
+        <div class="area">Clearwater</div>
+        <div class="area">Tampa</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="reviews" id="reviews">
+
+  <div class="container">
+
+    <div class="section-heading">
+      <span>Customer Experience</span>
+      <h2>What Our Customers Say</h2>
+    </div>
+
+    <div class="review-grid">
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          Professional mobile detailing and great attention to detail.
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          Convenient service right at your door and excellent results.
+        </p>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          Quality work and friendly service. Highly recommended.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="cta" id="contact">
+
+  <div class="container">
+
+    <h2>Ready for a Clean Car?</h2>
+
+    <p>
+      Contact NPR Auto Spa today for pricing and availability.
+    </p>
+
+    <a class="btn" href="#contact">
+      REQUEST A QUOTE
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    <strong>NPR Auto Spa LLC</strong><br>
+    Mobile Car Detailing • New Port Richey, Florida
+  </p>
+
+  <p style="margin-top:12px;">
+    © 2026 NPR Auto Spa LLC. All Rights Reserved.
+  </p>
+
+</footer>
+
+</body>
+</html>
