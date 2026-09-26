@@ -16,13 +16,23 @@
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body {
+      width: 100%;
+      min-width: 0;
+      overflow-x: hidden;
       font-family: Arial, Helvetica, sans-serif;
       background: #080808;
       color: white;
       line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     /* NAVIGATION */
@@ -31,27 +41,33 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(5,5,5,.96);
+      width: 100%;
+      background: rgba(5, 5, 5, .96);
       border-bottom: 1px solid #252525;
     }
 
     .nav-container {
+      width: 100%;
       max-width: 1150px;
-      margin: auto;
-      padding: 16px 20px;
+      margin: 0 auto;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
     .brand {
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: 1px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
     }
 
-    .brand span {
-      color: #e21b23;
+    .brand img {
+      display: block;
+      width: 180px;
+      height: auto;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -65,6 +81,7 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -80,6 +97,7 @@
     /* HERO */
 
     .hero {
+      width: 100%;
       min-height: 86vh;
       display: flex;
       align-items: center;
@@ -90,8 +108,9 @@
     }
 
     .hero-content {
+      width: 100%;
       max-width: 900px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .small-title {
@@ -118,6 +137,7 @@
     }
 
     .hero p {
+      width: 100%;
       max-width: 680px;
       margin: 0 auto 30px;
       color: #c7c7c7;
@@ -163,12 +183,14 @@
     /* GENERAL SECTIONS */
 
     section {
+      width: 100%;
       padding: 80px 20px;
     }
 
     .container {
+      width: 100%;
       max-width: 1150px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .section-heading {
@@ -205,9 +227,13 @@
 
     .benefit-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 25px;
       text-align: center;
+    }
+
+    .benefit {
+      min-width: 0;
     }
 
     .benefit h3 {
@@ -228,11 +254,12 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .service-card {
+      min-width: 0;
       background: #121212;
       border: 1px solid #292929;
       border-radius: 12px;
@@ -279,15 +306,16 @@
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .photo-placeholder {
+      min-width: 0;
       min-height: 270px;
       border-radius: 12px;
       border: 1px dashed #555;
-      background: linear-gradient(145deg,#191919,#0b0b0b);
+      background: linear-gradient(145deg, #191919, #0b0b0b);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -299,8 +327,9 @@
     /* AREAS */
 
     .areas-box {
+      width: 100%;
       max-width: 800px;
-      margin: auto;
+      margin: 0 auto;
       text-align: center;
       background: #121212;
       padding: 40px 25px;
@@ -330,11 +359,12 @@
 
     .review-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .review {
+      min-width: 0;
       background: #181818;
       padding: 27px;
       border-radius: 12px;
@@ -358,7 +388,7 @@
     }
 
     .cta h2 {
-      font-size: clamp(34px,5vw,50px);
+      font-size: clamp(34px, 5vw, 50px);
       margin-bottom: 10px;
     }
 
@@ -375,6 +405,7 @@
     /* FOOTER */
 
     footer {
+      width: 100%;
       background: #050505;
       text-align: center;
       padding: 35px 20px;
@@ -385,12 +416,11 @@
       color: white;
     }
 
-    /* MOBILE */
+    /* TABLET */
 
-    @media(max-width: 800px) {
-
-      .nav-links a:not(.nav-book) {
-        display: none;
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 12px;
       }
 
       .benefit-grid,
@@ -399,40 +429,133 @@
       .review-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      nav,
+      header,
+      section,
+      footer {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 16px;
+      }
+
+      .brand img {
+        width: 125px;
+        max-width: 125px;
+        height: auto;
+      }
+
+      .nav-links a:not(.nav-book) {
+        display: none;
+      }
+
+      .nav-book {
+        display: inline-block;
+        padding: 9px 13px;
+        font-size: 12px;
+      }
 
       .hero {
+        width: 100%;
         min-height: 78vh;
+        padding: 65px 18px;
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 13vw, 65px);
+        overflow-wrap: break-word;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .small-title {
+        font-size: 13px;
+        letter-spacing: 2px;
       }
 
       section {
+        width: 100%;
         padding: 60px 18px;
       }
+
+      .container {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .benefit-grid,
+      .services-grid,
+      .photo-grid,
+      .review-grid {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .service-card,
+      .review,
+      .photo-placeholder,
+      .areas-box {
+        width: 100%;
+        max-width: 100%;
+      }
     }
-    .brand img {
-    width: 180px;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-    @media (max-width: 800px) {
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
 
-  .nav-container {
-    width: 100%;
-    max-width: 100%;
-  }
+    /* SMALL PHONES */
 
-  .brand img {
-    width: 120px;
-    max-width: 120px;
-    height: auto;
-  }
-}
+    @media (max-width: 420px) {
+      .brand img {
+        width: 110px;
+      }
+
+      .hero {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .buttons {
+        width: 100%;
+      }
+
+      .buttons .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .service-card {
+        padding: 23px 20px;
+      }
+    }
   </style>
 </head>
 
@@ -442,8 +565,8 @@
   <div class="nav-container">
 
     <div class="brand">
-    <img src="bd72d1a0-d6ef-4501-93be-6988d104ac22.jpg" alt="NPR Auto Spa Logo">
-</div>
+      <img src="bd72d1a0-d6ef-4501-93be-6988d104ac22.jpg" alt="NPR Auto Spa Logo">
+    </div>
 
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -524,9 +647,7 @@
     <div class="section-heading">
       <span>What We Do</span>
       <h2>Our Detailing Services</h2>
-      <p>
-        Choose the level of care your vehicle needs.
-      </p>
+      <p>Choose the level of care your vehicle needs.</p>
     </div>
 
 
@@ -534,9 +655,7 @@
 
       <div class="service-card">
         <h3>Basic Detail</h3>
-        <p>
-          Perfect for maintaining a clean vehicle inside and out.
-        </p>
+        <p>Perfect for maintaining a clean vehicle inside and out.</p>
 
         <ul>
           <li>Interior vacuum</li>
@@ -551,9 +670,7 @@
 
       <div class="service-card">
         <h3>Deep Cleaning</h3>
-        <p>
-          A complete deep cleaning for vehicles that need extra attention.
-        </p>
+        <p>A complete deep cleaning for vehicles that need extra attention.</p>
 
         <ul>
           <li>Deep interior cleaning</li>
@@ -568,9 +685,7 @@
 
       <div class="service-card">
         <h3>Additional Services</h3>
-        <p>
-          Add extra services depending on your vehicle's needs.
-        </p>
+        <p>Add extra services depending on your vehicle's needs.</p>
 
         <ul>
           <li>Seat stain removal</li>
@@ -595,9 +710,7 @@
     <div class="section-heading">
       <span>Real Results</span>
       <h2>Before & After</h2>
-      <p>
-        See the difference professional detailing can make.
-      </p>
+      <p>See the difference professional detailing can make.</p>
     </div>
 
     <div class="photo-grid">
